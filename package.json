@@ -1,0 +1,23 @@
+{
+  "name": "hapi-bookshelf-models",
+  "version": "1.0.0",
+  "description": "Hapi Plugin to Register Bookshelf Models",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lob/hapi-bookshelf-models.git"
+  },
+  "keywords": [
+    "hapi",
+    "bookshelf"
+  ],
+  "author": "Peter Nagel <peter@lob.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lob/hapi-bookshelf-models/issues"
+  },
+  "homepage": "https://github.com/lob/hapi-bookshelf-models"
+}
