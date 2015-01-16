@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+- '0.10.32'
+before_script:
+- npm run style
+- npm run lint
+
