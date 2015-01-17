@@ -1,6 +1,6 @@
 {
   "name": "hapi-bookshelf-models",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hapi Plugin to Register Bookshelf Models",
   "main": "index.js",
   "scripts": {
