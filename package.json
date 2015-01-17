@@ -4,7 +4,8 @@
   "description": "Hapi Plugin to Register Bookshelf Models",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test",
+    "enforce": "gulp enforce"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,28 @@
   "bugs": {
     "url": "https://github.com/lob/hapi-bookshelf-models/issues"
   },
-  "homepage": "https://github.com/lob/hapi-bookshelf-models"
+  "homepage": "https://github.com/lob/hapi-bookshelf-models",
+  "dependencies": {
+    "bookshelf": "^0.7.9",
+    "joi": "^5.1.0",
+    "knex": "^0.7.3"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.10",
+    "gulp-clean": "^0.3.1",
+    "gulp-exit": "0.0.2",
+    "gulp-istanbul": "^0.5.0",
+    "gulp-istanbul-enforcer": "^1.0.3",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-mocha": "^2.0.0",
+    "hapi": "^8.1.0",
+    "istanbul": "^0.3.5",
+    "jscs": "^1.10.0",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.1.0",
+    "sqlite3": "^3.0.4"
+  }
 }

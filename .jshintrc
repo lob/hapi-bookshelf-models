@@ -5,6 +5,7 @@
   "debug": false,
   "devel": false,
   "eqeqeq": true,
+  "expr": true,
   "forin": false,
   "immed": false,
   "newcap": true,
