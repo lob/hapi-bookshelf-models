@@ -64,3 +64,8 @@ gulp.task('enforce', function () {
     })
     .pipe(plugins.exit());
 });
+
+gulp.task('coveralls', function () {
+  gulp.src('coverage/**/lcov.info')
+    .pipe(plugins.coveralls());
+});
