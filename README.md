@@ -34,7 +34,7 @@ server.register([
   // An error will be available here if anything goes wrong
 });
 
-// You can now access Bookshelf.js via server.plugins.bookshelf and 
+// You can now access Bookshelf.js via server.plugins.bookshelf and
 // models can be retrieved via server.plugins.bookshelf.model('ModelName')
 ```
 
@@ -42,7 +42,21 @@ server.register([
 - ```knex``` [Knex Confuration Object](http://knexjs.org/#Installation-client)
 - ```plugins``` [Bookshelf.js Plugins](http://bookshelfjs.org/#Plugins) the _registry_ plugin is required
 - ```models``` directory where you Bookshelf.js models are defined
-- ```base```options that will be passed to the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend)
+- ```base```options that will be passed to the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend), example below.
+
+### Example ```base```
+```javascript
+// Basic, No Extension
+base: function (bookshelf) {
+  return bookshelf.Model.extend({});
+}
+
+// Add timestamps to all models
+base: function (bookshelf) {
+  return bookshelf.Model.extend({
+    hasTimestamps: true
+  });
+}
 
 # Defining Models
 There is more extensive documentation about defining models for the _registry_ plugin on the [Bookshelf.js Wiki](https://github.com/tgriesser/bookshelf/wiki/Plugin:-Model-Registry). Below is an example of defining two related models that can be placed in the ```models``` directory referenced above.
@@ -55,7 +69,7 @@ module.exports = function (bookshelf) {
       return this.belongsToMany('Role');
     }
   });
-};  
+};
 
 // role.js
 module.exports = function (bookshelf) {
