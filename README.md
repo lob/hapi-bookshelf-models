@@ -27,7 +27,7 @@ server.register([
       },
       plugins: ['registry'], // Required
       models: '../path/to/models/directory',
-      base: require('../path/to/model/base')
+      base: require('../path/to/model/base') // optional
     }
   }
 ], function (err) {
@@ -42,15 +42,10 @@ server.register([
 - ```knex``` [Knex Confuration Object](http://knexjs.org/#Installation-client)
 - ```plugins``` [Bookshelf.js Plugins](http://bookshelfjs.org/#Plugins) the _registry_ plugin is required
 - ```models``` directory where you Bookshelf.js models are defined
-- ```base```options that will be passed to the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend), example below.
+- ```base``` (optional) function that applies the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend) and returns the extended model, example below.
 
 ### Example ```base```
 ```javascript
-// Basic, No Extension
-base: function (bookshelf) {
-  return bookshelf.Model.extend({});
-}
-
 // Add timestamps to all models
 base: function (bookshelf) {
   return bookshelf.Model.extend({
