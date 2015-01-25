@@ -39,7 +39,7 @@ server.register([
 ```
 
 # Options
-- ```knex``` [Knex Confuration Object](http://knexjs.org/#Installation-client)
+- ```knex``` [Knex Configuration Object](http://knexjs.org/#Installation-client)
 - ```plugins``` [Bookshelf.js Plugins](http://bookshelfjs.org/#Plugins) the _registry_ plugin is required
 - ```models``` directory where you Bookshelf.js models are defined
 - ```base``` (optional) function that applies the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend) and returns the extended model, example below.
