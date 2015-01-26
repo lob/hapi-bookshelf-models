@@ -1,6 +1,8 @@
 # Hapi Bookshelf Models
 [![Build Status](https://travis-ci.org/lob/hapi-bookshelf-models.svg)](https://travis-ci.org/lob/hapi-bookshelf-models)
 [![Coverage Status](https://coveralls.io/repos/lob/hapi-bookshelf-models/badge.svg?branch=master)](https://coveralls.io/r/lob/hapi-bookshelf-models?branch=master)
+[![NPM version](https://badge.fury.io/js/hapi-bookshelf-models.svg)](https://npmjs.org/package/hapi-bookshelf-models)
+[![Downloads](http://img.shields.io/npm/dm/hapi-bookshelf-models.svg)](https://npmjs.org/package/hapi-bookshelf-models)
 
 
 The purpose of this plugin is to provide a convenient way to register [Bookshelf.js](http://bookshelfjs.org/) models and expose them via a [Hapi](http://hapijs.com/) plugin.
