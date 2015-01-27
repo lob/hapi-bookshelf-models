@@ -54,6 +54,7 @@ base: function (bookshelf) {
     hasTimestamps: true
   });
 }
+```
 
 # Defining Models
 There is more extensive documentation about defining models for the _registry_ plugin on the [Bookshelf.js Wiki](https://github.com/tgriesser/bookshelf/wiki/Plugin:-Model-Registry). Below is an example of defining two related models that can be placed in the ```models``` directory referenced above.
