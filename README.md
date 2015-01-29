@@ -45,6 +45,7 @@ server.register([
 - ```plugins``` [Bookshelf.js Plugins](http://bookshelfjs.org/#Plugins) the _registry_ plugin is required
 - ```models``` directory where you Bookshelf.js models are defined
 - ```base``` (optional) function that applies the Bookshelf.js [extend method](http://bookshelfjs.org/#Model-extend) and returns the extended model, example below.
+- ```namespace``` (optional) string that will control how models are exposed in the plugin. The intent is to support models coming from multiple knex connections or to logically segment models. Models can be accessed via `server.plugins.bookshelf.{namespace}.model('ModelName')`
 
 ### Example ```base```
 ```javascript
@@ -80,3 +81,42 @@ After loading these models you can access them via ```server.plugins.bookshelf.m
 
 ### Notes:
 - Models will be registered and made available under the file name with the first character capitalized. For example ```user.js``` becomes ```User``` and ```blogPost.js``` becomes ```BlogPost```
+
+# Registering Multiple Namespaces
+Modeling namespaces is a great way to expose models from multiple databases using the same interface. Below is an example of how you can do this.
+
+```javascript
+var Hapi = require('hapi');
+
+var server = new Hapi.Server();
+
+server.register([
+  {
+    register: require('hapi-bookshelf-models'),
+    options: {
+      knex: {
+        // connection one details
+      },
+      plugins: ['registry'],
+      models: '../path/to/namespaceone/models/directory',
+      namespace: 'namespaceone'
+    }
+  },
+  {
+    register: require('hapi-bookshelf-models'),
+    options: {
+      knex: { 
+        //connection two details 
+      },
+      plugins: ['registry'],
+      models: '../path/to/namespacetwo/models/directory',
+      namespace: 'namespacetwo'
+    }
+  }
+], function (err) {
+  // An error will be available here if anything goes wrong
+});
+
+// You can access the namespaceone models via server.plugins.bookshelf.namespaceone.model('ModelName')
+// You can access the namespacetwo models via server.plugins.bookshelf.namespacetwo.model('ModelName')
+```
