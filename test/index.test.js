@@ -91,13 +91,17 @@ describe('bookshelf plugin', function () {
             }
           },
           plugins: ['registry'],
-          models: path.join(__dirname + '/models')
+          models: path.join(__dirname + '/models'),
+          namespace: 'test'
         }
       }
     ], function (err) {
       expect(err).to.be.undefined;
-      expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+      expect(server.plugins.bookshelf.test.model('User')).to.be.a('function');
     });
   });
 
+  it('should allow namespacing for multiple registrations', function () {
+
+  });
 });
