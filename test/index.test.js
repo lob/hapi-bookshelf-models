@@ -91,6 +91,29 @@ describe('bookshelf plugin', function () {
             }
           },
           plugins: ['registry'],
+          models: path.join(__dirname + '/models')
+        }
+      }
+    ], function (err) {
+      expect(err).to.be.undefined;
+      expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+    });
+  });
+
+  it('should allow namespacing', function () {
+    var server = new Hapi.Server();
+
+    server.register([
+      {
+        register: require('../lib/'),
+        options: {
+          knex: {
+            client: 'sqlite3',
+            connection: {
+              filename: './database.sqlite'
+            }
+          },
+          plugins: ['registry'],
           models: path.join(__dirname + '/models'),
           namespace: 'test'
         }
@@ -99,9 +122,5 @@ describe('bookshelf plugin', function () {
       expect(err).to.be.undefined;
       expect(server.plugins.bookshelf.test.model('User')).to.be.a('function');
     });
-  });
-
-  it('should allow namespacing for multiple registrations', function () {
-
   });
 });
