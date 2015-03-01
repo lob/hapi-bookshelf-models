@@ -58,11 +58,11 @@ base: function (bookshelf) {
 ```
 
 # Defining Models
-There is more extensive documentation about defining models for the _registry_ plugin on the [Bookshelf.js Wiki](https://github.com/tgriesser/bookshelf/wiki/Plugin:-Model-Registry). Below is an example of defining two related models that can be placed in the ```models``` directory referenced above.
+There is more extensive documentation about defining models for the _registry_ plugin on the [Bookshelf.js Wiki](https://github.com/tgriesser/bookshelf/wiki/Plugin:-Model-Registry). Below is an example of defining two related models that can be placed in the ```models``` directory referenced above. `baseModel` is the Bookshelf model created by the `base` option or just the basic Bookshelf model if you didn't define one. `bookshelf` is a Bookshelf instance with a connection to the database defined when the plugin was registered.
 ```javascript
 // user.js
-module.exports = function (bookshelf) {
-  return bookshelf.extend({
+module.exports = function (baseModel, bookshelf) {
+  return baseModel.extend({
     tableName: 'users',
     roles: function () {
       return this.belongsToMany('Role');
@@ -71,8 +71,8 @@ module.exports = function (bookshelf) {
 };
 
 // role.js
-module.exports = function (bookshelf) {
-  return bookshelf.extend({
+module.exports = function (baseModel, bookshelf) {
+  return baseModel.extend({
     tableName: 'roles'
   });
 };
