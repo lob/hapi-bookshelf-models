@@ -1,3 +1,7 @@
+## 1.4.0 (2015-09-10)
+
+- Ignore hidden files in models directory
+
 ## 1.3.0 (2015-03-01)
 
 - Pass `bookshelf` instance to model register
