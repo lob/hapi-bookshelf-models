@@ -1,3 +1,7 @@
+## 1.5.0 (2015-09-29)
+
+- Allow Hapi 9.x and 10.x
+
 ## 1.4.0 (2015-09-10)
 
 - Ignore hidden files in models directory
