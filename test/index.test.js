@@ -72,9 +72,213 @@ describe('bookshelf plugin', function () {
     ], function (err) {
       expect(err).to.be.undefined;
       expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+      expect(server.plugins.bookshelf.model('Role')).to.be.undefined;
       var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
       expect(User.test).to.eql('test');
     });
+  });
+
+  it('should load a good configuration with glob', function () {
+    var server = new Hapi.Server();
+
+    server.register([
+      {
+        register: require('../lib/'),
+        options: {
+          knex: {
+            client: 'sqlite3',
+            connection: {
+              filename: './database.sqlite'
+            }
+          },
+          plugins: ['registry'],
+          models: [
+            path.join(__dirname + '/models/*.js'),
+            path.join(__dirname + '/models/subfolder/*.js')
+          ],
+          base: function (bookshelf) {
+            return bookshelf.Model.extend({
+              test: 'test'
+            });
+          }
+        }
+      }
+    ], function (err) {
+      expect(err).to.be.undefined;
+      expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+      expect(server.plugins.bookshelf.model('Role')).to.be.a('function');
+      var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+      expect(User.test).to.eql('test');
+    });
+  });
+
+  it('should load a good configuration with recursive glob as array',
+    function () {
+      var server = new Hapi.Server();
+
+      server.register([
+        {
+          register: require('../lib/'),
+          options: {
+            knex: {
+              client: 'sqlite3',
+              connection: {
+                filename: './database.sqlite'
+              }
+            },
+            plugins: ['registry'],
+            models: [path.join(__dirname + '/models/**/*.js')],
+            base: function (bookshelf) {
+              return bookshelf.Model.extend({
+                test: 'test'
+              });
+            }
+          }
+        }
+      ], function (err) {
+        expect(err).to.be.undefined;
+        expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+        expect(server.plugins.bookshelf.model('Role')).to.be.a('function');
+        var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+        expect(User.test).to.eql('test');
+      }
+    );
+  });
+
+  it('should load a good configuration with recursive glob as string',
+    function () {
+      var server = new Hapi.Server();
+
+      server.register([
+        {
+          register: require('../lib/'),
+          options: {
+            knex: {
+              client: 'sqlite3',
+              connection: {
+                filename: './database.sqlite'
+              }
+            },
+            plugins: ['registry'],
+            models: path.join(__dirname + '/models/**/*.js'),
+            base: function (bookshelf) {
+              return bookshelf.Model.extend({
+                test: 'test'
+              });
+            }
+          }
+        }
+      ], function (err) {
+        expect(err).to.be.undefined;
+        expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+        expect(server.plugins.bookshelf.model('Role')).to.be.a('function');
+        var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+        expect(User.test).to.eql('test');
+      }
+    );
+  });
+
+  it('should load a good configuration with absolute path as string',
+    function () {
+      var server = new Hapi.Server();
+
+      server.register([
+        {
+          register: require('../lib/'),
+          options: {
+            knex: {
+              client: 'sqlite3',
+              connection: {
+                filename: './database.sqlite'
+              }
+            },
+            plugins: ['registry'],
+            models: path.join(__dirname + '/models/user.js'),
+            base: function (bookshelf) {
+              return bookshelf.Model.extend({
+                test: 'test'
+              });
+            }
+          }
+        }
+      ], function (err) {
+        expect(err).to.be.undefined;
+        expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+        var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+        expect(User.test).to.eql('test');
+      }
+    );
+  });
+
+  it('should load a good configuration with absolute paths as array',
+    function () {
+      var server = new Hapi.Server();
+
+      server.register([
+        {
+          register: require('../lib/'),
+          options: {
+            knex: {
+              client: 'sqlite3',
+              connection: {
+                filename: './database.sqlite'
+              }
+            },
+            plugins: ['registry'],
+            models: [
+              path.join(__dirname + '/models/user.js'),
+              path.join(__dirname + '/models/subfolder/role.js')
+            ],
+            base: function (bookshelf) {
+              return bookshelf.Model.extend({
+                test: 'test'
+              });
+            }
+          }
+        }
+      ], function (err) {
+        expect(err).to.be.undefined;
+        expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+        expect(server.plugins.bookshelf.model('Role')).to.be.a('function');
+        var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+        expect(User.test).to.eql('test');
+      }
+    );
+  });
+
+  it('should load combination of models',
+    function () {
+      var server = new Hapi.Server();
+      var _baseOptions = {
+        register: require('../lib/'),
+        options: {
+          knex: {
+            client: 'sqlite3',
+            connection: {
+              filename: './database.sqlite'
+            }
+          },
+          plugins: ['registry'],
+          base: function (bookshelf) {
+            return bookshelf.Model.extend({
+              test: 'test'
+            });
+          }
+        }
+      };
+
+      _baseOptions.options.models = [
+        path.join(__dirname + '/models/user.js'),
+        path.join(__dirname + '/models/subfolder/**/*.js')
+      ];
+      server.register([_baseOptions], function (err) {
+        expect(err).to.be.undefined;
+        expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+        expect(server.plugins.bookshelf.model('Role')).to.be.a('function');
+        var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+        expect(User.test).to.eql('test');
+      });
+
   });
 
   it('should load a good configuration without base', function () {
