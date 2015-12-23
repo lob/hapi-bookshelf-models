@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/lob/hapi-bookshelf-models",
   "dependencies": {
-    "bookshelf": "^0.7.9",
+    "bookshelf": "^0.9.1",
     "joi": "^5.1.0",
     "knex": "^0.7.3"
   },
