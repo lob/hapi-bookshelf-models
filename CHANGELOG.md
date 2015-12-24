@@ -1,3 +1,7 @@
+## 1.6.0 (2015-12-23)
+
+- Update bookshelf to 0.9.1
+
 ## 1.5.0 (2015-09-29)
 
 - Allow Hapi 9.x and 10.x
