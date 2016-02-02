@@ -1,3 +1,9 @@
+### 1.7.0 (2016-2-2)
+
+##### Chores
+
+* **release:** add release scripts with changelog generation ([63bbf46f](https://github.com/lob/hapi-bookshelf-models/commit/63bbf46f))
+
 ## 1.6.0 (2015-12-23)
 
 - Update bookshelf to 0.9.1
