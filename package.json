@@ -6,7 +6,10 @@
   "scripts": {
     "test": "gulp test",
     "enforce": "gulp enforce",
-    "coveralls": "gulp coveralls"
+    "coveralls": "gulp coveralls",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+    "generate-changelog": "^1.0.0",
     "gulp": "^3.8.10",
     "gulp-clean": "^0.3.1",
     "gulp-coveralls": "^0.1.3",
