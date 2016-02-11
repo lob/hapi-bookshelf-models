@@ -1,4 +1,14 @@
+#### 1.7.1 (2016-2-11)
+
+##### Bug Fixes
+
+* **paths:** fixed error thrown by a configuration with a relative path to models ([efadcdd4](https://github.com/lob/hapi-bookshelf-models/commit/efadcdd4b6f36fa197b27577eeeb205cef12c710))
+
 ### 1.7.0 (2016-2-2)
+
+##### New Features
+
+* **paths:** added glob to support wildcard model folder structure ([68fc0f5a](https://github.com/lob/hapi-bookshelf-models/commit/68fc0f5a8e888204145d9ba4f1764b5efb7bdb5b))
 
 ##### Chores
 
