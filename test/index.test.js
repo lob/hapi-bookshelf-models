@@ -78,6 +78,37 @@ describe('bookshelf plugin', function () {
     });
   });
 
+  it('should load a good configuration with relative path', function () {
+    var server = new Hapi.Server();
+
+    server.register([
+      {
+        register: require('../lib/'),
+        options: {
+          knex: {
+            client: 'sqlite3',
+            connection: {
+              filename: './database.sqlite'
+            }
+          },
+          plugins: ['registry'],
+          models: 'test/models',
+          base: function (bookshelf) {
+            return bookshelf.Model.extend({
+              test: 'test'
+            });
+          }
+        }
+      }
+    ], function (err) {
+      expect(err).to.be.undefined;
+      expect(server.plugins.bookshelf.model('User')).to.be.a('function');
+      expect(server.plugins.bookshelf.model('Role')).to.be.undefined;
+      var User = server.plugins.bookshelf.model('User').forge({ id: 1 });
+      expect(User.test).to.eql('test');
+    });
+  });
+
   it('should load a good configuration with glob', function () {
     var server = new Hapi.Server();
 
