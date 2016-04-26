@@ -2,7 +2,7 @@
   "name": "hapi-bookshelf-models",
   "version": "1.7.1",
   "description": "Hapi Plugin to Register Bookshelf Models",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "gulp test",
     "enforce": "gulp enforce",
