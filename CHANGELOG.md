@@ -1,3 +1,9 @@
+### 1.8.0 (2016-5-17)
+
+##### New Features
+
+* **collections:** add support for bookshelf collections ([4cae0206](https://github.com/lob/hapi-bookshelf-models/commit/4cae0206a35679f8b176d6d71f958b5949ab6611))
+
 #### 1.7.1 (2016-2-11)
 
 ##### Bug Fixes
