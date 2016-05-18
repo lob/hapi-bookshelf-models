@@ -29,7 +29,11 @@ server.register([
       },
       plugins: ['registry'], // Required
       models: '../path/to/models/directory',
-      base: require('../path/to/model/base') // optional
+      collections: '../path/to/collections/directory',
+      base: {
+        model: require('../path/to/model/base'), // optional
+        collection: require('../path/to/collection/base') // optional
+      }
     }
   }
 ], function (err) {
@@ -105,8 +109,8 @@ server.register([
   {
     register: require('hapi-bookshelf-models'),
     options: {
-      knex: { 
-        //connection two details 
+      knex: {
+        //connection two details
       },
       plugins: ['registry'],
       models: '../path/to/namespacetwo/models/directory',
