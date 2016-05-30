@@ -1,6 +1,8 @@
 language: node_js
 node_js:
 - '0.10.32'
+before_script:
+- npm i knex@0 bookshelf@0
 after_script:
 - npm run enforce
 - npm run coveralls

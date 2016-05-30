@@ -4,7 +4,28 @@ var Hapi    = require('hapi');
 var path    = require('path');
 
 describe('bookshelf plugin', function () {
-  it('should fail to load with bad knex', function () {
+  it('should fail to load with bad knex options', function () {
+    var server = new Hapi.Server();
+
+    server.register([
+      {
+        register: require('../lib/'),
+        options: {
+          knex: {
+            client: 'fake_client'
+          },
+          models: 'asdf',
+          base: function () {
+            return 1;
+          }
+        }
+      }
+    ], function (err) {
+      expect(err).to.be.instanceof(Error);
+    });
+  });
+
+  it('should fail to load with bad models path', function () {
     var server = new Hapi.Server();
 
     server.register([
@@ -56,6 +77,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -87,6 +109,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -118,6 +141,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -153,6 +177,7 @@ describe('bookshelf plugin', function () {
           options: {
             knex: {
               client: 'sqlite3',
+              useNullAsDefault: true,
               connection: {
                 filename: './database.sqlite'
               }
@@ -186,6 +211,7 @@ describe('bookshelf plugin', function () {
           options: {
             knex: {
               client: 'sqlite3',
+              useNullAsDefault: true,
               connection: {
                 filename: './database.sqlite'
               }
@@ -219,6 +245,7 @@ describe('bookshelf plugin', function () {
           options: {
             knex: {
               client: 'sqlite3',
+              useNullAsDefault: true,
               connection: {
                 filename: './database.sqlite'
               }
@@ -251,6 +278,7 @@ describe('bookshelf plugin', function () {
           options: {
             knex: {
               client: 'sqlite3',
+              useNullAsDefault: true,
               connection: {
                 filename: './database.sqlite'
               }
@@ -285,6 +313,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -321,6 +350,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -344,6 +374,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -368,6 +399,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }
@@ -400,6 +432,7 @@ describe('bookshelf plugin', function () {
         options: {
           knex: {
             client: 'sqlite3',
+            useNullAsDefault: true,
             connection: {
               filename: './database.sqlite'
             }

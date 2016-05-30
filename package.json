@@ -26,10 +26,12 @@
   },
   "homepage": "https://github.com/lob/hapi-bookshelf-models",
   "dependencies": {
-    "bookshelf": "^0.9.1",
     "glob": "^5.0.15",
-    "joi": "^6.10.1",
-    "knex": "^0.7.3"
+    "joi": "^6.10.1"
+  },
+  "peerDependencies": {
+    "bookshelf": "0.x",
+    "knex": "0.x"
   },
   "devDependencies": {
     "chai": "^1.10.0",
