@@ -1,6 +1,7 @@
-var gulp      = require('gulp');
-var plugins   = require('gulp-load-plugins')();
-var stylish   = require('jshint-stylish');
+'use strict';
+
+var gulp    = require('gulp');
+var plugins = require('gulp-load-plugins')();
 
 var paths = {
   sourceFiles: 'lib/**/*.js',
@@ -8,24 +9,12 @@ var paths = {
   gulpFile: 'gulpfile.js'
 };
 
-gulp.task('style', function () {
-  return gulp.src([paths.sourceFiles, paths.testFiles, paths.gulpFile])
-    .pipe(plugins.jscs());
-});
-
 gulp.task('cover', function () {
   return gulp.src(paths.sourceFiles)
     .pipe(plugins.istanbul());
 });
 
-gulp.task('lint', function () {
-  return gulp.src([paths.sourceFiles, paths.testFiles, paths.gulpFile])
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter(stylish))
-    .pipe(plugins.jshint.reporter('fail'));
-});
-
-gulp.task('test', ['lint', 'style', 'cover'], function () {
+gulp.task('test', ['cover'], function () {
   gulp.src('./coverage')
     .pipe(plugins.clean());
 
@@ -59,7 +48,7 @@ gulp.task('enforce', function () {
       rootDirectory: '.'
     }))
     .on('error', function (error) {
-      console.log(error.message);
+      console.log(error.message); // eslint-disable-line no-console
       process.exit(1);
     })
     .pipe(plugins.exit());

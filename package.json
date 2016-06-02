@@ -4,12 +4,13 @@
   "description": "Hapi Plugin to Register Bookshelf Models",
   "main": "lib/index.js",
   "scripts": {
-    "test": "gulp test",
-    "enforce": "gulp enforce",
     "coveralls": "gulp coveralls",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags",
+    "enforce": "gulp enforce",
+    "lint": "eslint .",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
-    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags"
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,8 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+    "eslint": "^1.10.3",
+    "eslint-config-lob": "^1.0.1",
     "generate-changelog": "^1.0.0",
     "gulp": "^3.8.10",
     "gulp-clean": "^0.3.1",
@@ -42,14 +45,10 @@
     "gulp-exit": "0.0.2",
     "gulp-istanbul": "^0.5.0",
     "gulp-istanbul-enforcer": "^1.0.3",
-    "gulp-jscs": "^1.4.0",
-    "gulp-jshint": "^1.9.0",
     "gulp-load-plugins": "^0.8.0",
     "gulp-mocha": "^2.0.0",
     "hapi": "8.x.x || 9.x.x || 10.x.x",
     "istanbul": "^0.3.5",
-    "jscs": "^1.10.0",
-    "jshint-stylish": "^1.0.0",
     "mocha": "^2.1.0",
     "sqlite3": "^3.0.4"
   }
