@@ -1,3 +1,9 @@
+## 2.0.0 (2016-6-4)
+
+##### Chores
+
+* **dependencies:** make bookshelf and knex peer dependencies ([e39441c9](https://github.com/lob/hapi-bookshelf-models/commit/e39441c9a4ca394982158a34d8f65f671a2b18ab))
+
 ### 1.8.0 (2016-5-17)
 
 ##### New Features
