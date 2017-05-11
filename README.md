@@ -1,3 +1,11 @@
+# No Longer Supported
+
+We will not be making changes, accepting pull requests, or cutting new versions of this repository.
+
+We no longer recommend using this repository as it does not promote best practices. More information be found [in this comment](https://github.com/lob/hapi-bookshelf-models/issues/32#issuecomment-285566162).
+
+Instead, we recommend requiring Bookshelf models using standard Node.js `require` statements. They are easier to maintain and understand when reading code.
+
 # Hapi Bookshelf Models
 [![Build Status](https://travis-ci.org/lob/hapi-bookshelf-models.svg)](https://travis-ci.org/lob/hapi-bookshelf-models)
 [![Coverage Status](https://coveralls.io/repos/lob/hapi-bookshelf-models/badge.svg?branch=master)](https://coveralls.io/r/lob/hapi-bookshelf-models?branch=master)
