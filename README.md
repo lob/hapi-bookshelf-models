@@ -1,4 +1,4 @@
-# No Longer Supported
+# :warning: No Longer Supported :warning:
 
 We will not be making changes, accepting pull requests, or cutting new versions of this repository.
 
