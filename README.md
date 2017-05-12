@@ -2,7 +2,7 @@
 
 **We will not be making changes, accepting pull requests, or cutting new versions of this repository.**
 
-We no longer recommend using this repository as it does not promote best practices. More information be found [in this comment](https://github.com/lob/hapi-bookshelf-models/issues/32#issuecomment-285566162).
+We no longer recommend using this repository as it does not promote best practices.
 
 - While it makes it easier by loading in all of the models in a directory, it adds a bit of magic to the loading process that should be left explicit.
 - It makes it harder to reference these models once you start fleshing out your codebase i.e. pulling your code into separate files. For you to be able to access any of your models in another file, you'll need to have access to the `server` object so you'll have to pass that around, even though you don't need the entire object.
