@@ -1,10 +1,16 @@
 # :warning: No Longer Supported :warning:
 
-We will not be making changes, accepting pull requests, or cutting new versions of this repository.
+**We will not be making changes, accepting pull requests, or cutting new versions of this repository.**
 
 We no longer recommend using this repository as it does not promote best practices. More information be found [in this comment](https://github.com/lob/hapi-bookshelf-models/issues/32#issuecomment-285566162).
 
-Instead, we recommend requiring Bookshelf models using standard Node.js `require` statements. They are easier to maintain and understand when reading code.
+- While it makes it easier by loading in all of the models in a directory, it adds a bit of magic to the loading process that should be left explicit.
+- It makes it harder to reference these models once you start fleshing out your codebase i.e. pulling your code into separate files. For you to be able to access any of your models in another file, you'll need to have access to the `server` object so you'll have to pass that around, even though you don't need the entire object.
+- We don't actively maintain this repo since we don't really use it ourselves anymore.
+- The [Bookshelf registry plugin](https://github.com/tgriesser/bookshelf/wiki/Plugin:-Model-Registry) is required when using this modules, but if you don't actually need it (i.e. you don't have circular dependencies with your models), then it just adds unnecessary complexity to your project.
+- The creator of Hapi [frowns upon](https://gist.github.com/hueniverse/f01faf422eb038d87d57#when-should-i-not-use-multiple-plugins) using plugins in this manner.
+
+Instead, we recommend just `require`ing the models as you need them. That way, you can easily refer to the models and only include the ones that make sense to have in the current context.
 
 # Hapi Bookshelf Models
 [![Build Status](https://travis-ci.org/lob/hapi-bookshelf-models.svg)](https://travis-ci.org/lob/hapi-bookshelf-models)
